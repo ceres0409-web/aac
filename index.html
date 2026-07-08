@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yugyeong Shin · AAC 전략기획실</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root{
+    --bg:#ffffff; --bg2:#f5f5f7; --ink:#1d1d1f; --sec:#6e6e73; --sec2:#86868b;
+    --line:#d2d2d7; --line2:#e8e8ed; --dark:#000000; --card:#ffffff;
+    --hair:rgba(255,255,255,.16);
+    --sans:'Pretendard','Apple SD Gothic Neo',system-ui,-apple-system,sans-serif;
+    --mono:'IBM Plex Mono','Pretendard','Apple SD Gothic Neo',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;letter-spacing:-0.014em}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sec2);font-weight:500}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line2)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:52px;max-width:1000px}
+  nav .brand{font-weight:700;font-size:15px;letter-spacing:-.02em}
+  nav .brand i{font-style:normal;color:var(--sec2);font-weight:500}
+  nav .links{display:flex;gap:24px;font-size:13px;font-weight:500;color:var(--sec)}
+  nav .links a:hover{color:var(--ink)}
+  @media(max-width:820px){nav .links{display:none}}
+
+  section{padding:118px 0;border-bottom:1px solid var(--line2)}
+  .head{text-align:center;max-width:760px;margin:0 auto 60px}
+  .head .eyebrow{margin-bottom:20px;display:block}
+  .head h2{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-.035em;line-height:1.08}
+  .head p{font-size:clamp(17px,2vw,20px);color:var(--sec);margin-top:20px;line-height:1.5;font-weight:400}
+
+  /* HERO */
+  .hero{background:var(--dark);color:#fff;min-height:100vh;display:flex;flex-direction:column;border-bottom:none;padding:0}
+  .hero-top{display:flex;justify-content:space-between;align-items:center;padding:24px 32px;max-width:1000px;margin:0 auto;width:100%}
+  .hero-top .m{font-weight:700;font-size:16px;letter-spacing:-.02em}
+  .hero-top .r{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#86868b}
+  .hero-core{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 32px}
+  .hero .eyebrow{color:#86868b;margin-bottom:30px}
+  .hero h1{font-size:clamp(34px,6.6vw,74px);font-weight:700;letter-spacing:-.04em;line-height:1.06;max-width:16ch}
+  .hero h1 .g{color:#a1a1a6}
+  .hero .who{margin-top:40px;font-size:15px;color:#86868b;font-weight:400}
+  .hero .who b{color:#f5f5f7;font-weight:600}
+  .hero .cue{padding:0 0 40px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6e6e73}
+
+  /* UNDERSTANDING */
+  .axes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+  .axis{text-align:center;padding:36px 16px;background:var(--bg2);border-radius:20px}
+  .axis .em{font-size:32px}
+  .axis h4{font-size:16px;font-weight:700;margin:14px 0 5px;letter-spacing:-.02em}
+  .axis p{font-size:12.5px;color:var(--sec);line-height:1.45}
+  @media(max-width:760px){.axes{grid-template-columns:1fr 1fr}}
+  .cycle{text-align:center;font-size:clamp(19px,2.6vw,27px);font-weight:600;letter-spacing:-.03em;margin-top:52px;line-height:1.4}
+  .cycle b{font-weight:700}
+  .cycle .arrow{color:var(--sec2);font-weight:400}
+
+  /* NORTH STAR panel */
+  .northstar{background:var(--dark);color:#fff;border-radius:24px;padding:60px 44px;text-align:center;margin-top:30px}
+  .northstar .star{font-size:30px;line-height:1}
+  .northstar .lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#86868b;margin-top:16px;display:block}
+  .northstar h3{font-size:clamp(22px,3.4vw,33px);font-weight:700;letter-spacing:-.035em;margin-top:16px;line-height:1.34}
+  .northstar h3 b{box-shadow:inset 0 -3px 0 #5a5a5f}
+  .northstar .g{color:#a1a1a6}
+
+  /* PILLARS */
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pcard{background:var(--bg2);border-radius:22px;padding:38px 36px}
+  .pcard .em{font-size:30px}
+  .pcard .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sec2);margin-top:18px;display:block}
+  .pcard h3{font-size:23px;font-weight:700;letter-spacing:-.03em;margin:8px 0 12px;line-height:1.2}
+  .pcard p{font-size:15px;color:var(--sec);line-height:1.55}
+  @media(max-width:760px){.pillars{grid-template-columns:1fr}}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .stat{text-align:center;padding:50px 20px;background:var(--dark);color:#fff;border-radius:22px}
+  .stat .v{font-size:clamp(46px,7vw,70px);font-weight:700;letter-spacing:-.05em;line-height:1}
+  .stat .v .u{font-size:.34em;color:#86868b;font-weight:600;margin-left:2px}
+  .stat .l{font-size:15px;color:#a1a1a6;margin-top:16px;font-weight:500}
+  @media(max-width:760px){.stats{grid-template-columns:1fr}}
+  .stat-note{text-align:center;font-size:13px;color:var(--sec2);margin-top:26px;font-family:var(--mono);letter-spacing:.02em}
+
+  /* MOTIVE */
+  .motive{max-width:780px;margin:0 auto 56px;text-align:center;font-size:clamp(18px,2.3vw,23px);font-weight:500;color:var(--ink);line-height:1.62;letter-spacing:-.022em}
+  .motive b{font-weight:700}
+  .motive .src{display:block;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sec2)}
+
+  /* AMRED ANALYSIS */
+  .amred{background:var(--bg2)}
+  .diag{max-width:940px;margin:0 auto}
+  .epigraph{text-align:center;max-width:780px;margin:0 auto 60px}
+  .epigraph p{font-size:clamp(19px,2.9vw,28px);font-weight:600;letter-spacing:-.03em;line-height:1.45;color:var(--ink)}
+  .epigraph cite{display:block;margin-top:18px;font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sec2)}
+
+  .sub-lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sec2);text-align:center;margin:64px 0 24px;display:flex;align-items:center;gap:16px;justify-content:center}
+  .sub-lab::before,.sub-lab::after{content:"";height:1px;width:56px;background:var(--line)}
+  .d-lead{text-align:center;font-size:clamp(19px,2.6vw,26px);font-weight:600;letter-spacing:-.03em;margin-bottom:14px;line-height:1.35}
+  .d-lead b{box-shadow:inset 0 -3px 0 var(--ink)}
+  .d-note{text-align:center;font-size:14.5px;color:var(--sec);max-width:640px;margin:0 auto 28px;line-height:1.55}
+
+  .spectrum{max-width:840px;margin:0 auto}
+  .spectrum .scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sec2);margin-bottom:10px;padding:0 4px}
+  .spectrum .bar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .zone{background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:24px 16px;text-align:center}
+  .zone .mk{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--sec2);display:block;margin-bottom:12px}
+  .zone h5{font-size:15px;font-weight:700;letter-spacing:-.02em}
+  .zone p{font-size:12.5px;color:var(--sec);margin-top:6px;line-height:1.4}
+  .zone.ok{border-color:var(--ink)}
+  .zone.ok .mk{color:var(--ink)}
+  .zone.trap{background:repeating-linear-gradient(135deg,#ececf0,#ececf0 7px,#e2e2e8 7px,#e2e2e8 14px);border-color:transparent}
+  .zone.trap .mk,.zone.trap h5,.zone.trap p{color:var(--sec)}
+  .zone.target{background:var(--dark);border-color:var(--dark)}
+  .zone.target .mk{color:#fff}.zone.target h5{color:#fff}.zone.target p{color:#a1a1a6}
+  @media(max-width:640px){.spectrum .bar{grid-template-columns:1fr}}
+
+  .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .dcard{background:var(--card);border-radius:20px;padding:32px 30px;border:1px solid var(--line2)}
+  .dcard .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:500}
+  .dcard .em{font-size:26px;margin-bottom:6px}
+  .dcard h3{font-size:19px;font-weight:700;letter-spacing:-.025em;margin:8px 0 11px;line-height:1.25}
+  .dcard p{font-size:14.5px;color:var(--sec);line-height:1.62}
+  .dcard p b{color:var(--ink);font-weight:600}
+  @media(max-width:760px){.dgrid{grid-template-columns:1fr}}
+
+  .cares{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:22px}
+  .cares span{font-size:13.5px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px}
+  .cares .plus{color:var(--sec2);align-self:center;font-size:12px;font-family:var(--mono)}
+
+  .equation{display:flex;align-items:stretch;justify-content:center;gap:14px;flex-wrap:wrap}
+  .equation .eq{flex:1;min-width:170px;background:var(--card);border:1px solid var(--line2);border-radius:18px;padding:26px 20px;text-align:center}
+  .equation .eq.res{background:var(--dark);border-color:var(--dark)}
+  .equation .eq .q{font-family:var(--mono);font-size:12px;color:var(--sec2)}
+  .equation .eq.res .q{color:#86868b}
+  .equation .eq h4{font-size:16px;font-weight:700;letter-spacing:-.02em;margin:8px 0 4px}
+  .equation .eq.res h4{color:#fff}
+  .equation .eq p{font-size:12.5px;color:var(--sec)}
+  .equation .eq.res p{color:#a1a1a6}
+  .equation .op{display:flex;align-items:center;font-size:24px;color:var(--sec2);font-weight:400}
+  @media(max-width:640px){.equation{flex-direction:column}.equation .op{justify-content:center;padding:2px 0}}
+
+  .markets{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .mk{background:var(--card);border:1px solid var(--line2);border-radius:20px;padding:30px 30px}
+  .mk .flag{font-size:26px}
+  .mk h4{font-size:19px;font-weight:700;letter-spacing:-.02em;margin:10px 0 4px}
+  .mk .oneline{font-size:13px;color:var(--sec2);font-family:var(--mono);letter-spacing:.02em;margin-bottom:20px}
+  .mk .row{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line2);font-size:14px}
+  .mk .row .k{width:60px;flex:none;color:var(--sec2);font-weight:600;font-size:12.5px;padding-top:1px}
+  .mk .row .v{color:var(--ink);line-height:1.5}
+  @media(max-width:760px){.markets{grid-template-columns:1fr}}
+
+  .synth{background:var(--dark);color:#fff;border-radius:22px;padding:56px 40px;margin-top:24px;text-align:center}
+  .synth .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#86868b}
+  .synth h3{font-size:clamp(21px,3.3vw,31px);font-weight:700;letter-spacing:-.035em;margin-top:16px;line-height:1.36}
+  .synth h3 b{box-shadow:inset 0 -2px 0 #5a5a5f}
+
+  /* IMPACT BLOCKS */
+  .impacts{max-width:840px;margin:0 auto}
+  .impact{display:grid;grid-template-columns:88px 1fr;gap:8px 30px;align-items:start;padding:42px 0;border-top:1px solid var(--line)}
+  .impact:first-child{border-top:none}
+  .impact .em{font-size:44px;grid-row:span 2;line-height:1}
+  .impact .n{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--sec2);align-self:center}
+  .impact h3{font-size:clamp(21px,3vw,29px);font-weight:700;letter-spacing:-.03em;line-height:1.15}
+  .impact p{font-size:16px;color:var(--sec);line-height:1.55;margin-top:10px;grid-column:2}
+  .impact p b{color:var(--ink);font-weight:600}
+  @media(max-width:640px){.impact{grid-template-columns:52px 1fr}.impact .em{font-size:32px}}
+
+  /* CLOSE */
+  .close{background:var(--dark);color:#fff;border-bottom:none;text-align:center}
+  .close h2{font-size:clamp(28px,4.6vw,52px);font-weight:700;letter-spacing:-.04em;line-height:1.1;max-width:18ch;margin:0 auto}
+  .close h2 .g{color:#a1a1a6}
+  .close .ct{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+  .close .ct a{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:#f5f5f7;border:1px solid var(--hair);border-radius:999px;padding:11px 22px;transition:.2s}
+  .close .ct a:hover{background:#fff;color:#000;border-color:#fff}
+  footer{background:var(--dark);color:#6e6e73;text-align:center;font-size:12px;padding:0 0 40px;font-family:var(--mono);letter-spacing:.04em}
+
+  /* === strategic diagnosis === */
+  .takeaway{max-width:740px;margin:28px auto 0;text-align:center;font-size:15.5px;color:var(--sec);line-height:1.6}
+  .takeaway b{color:var(--ink);font-weight:600}
+  .sd-open{max-width:820px;margin:0 auto;text-align:center;font-size:clamp(24px,3.9vw,40px);font-weight:700;letter-spacing:-.035em;line-height:1.24}
+  .sd-open b{box-shadow:inset 0 -4px 0 var(--ink)}
+  .sd-sub{max-width:640px;margin:22px auto 0;text-align:center;font-size:16px;color:var(--sec);line-height:1.6}
+  .sd-sub b{color:var(--ink);font-weight:600}
+  .sd-q{text-align:center;font-size:clamp(20px,2.9vw,28px);font-weight:700;letter-spacing:-.03em;margin-bottom:26px}
+
+  .jcard{max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:18px 34px}
+  .journey{position:relative}
+  .journey::before{content:"";position:absolute;left:5px;top:28px;bottom:28px;width:1.5px;background:var(--line)}
+  .jrow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;position:relative}
+  .jrow .left{display:flex;align-items:center;gap:18px}
+  .jrow .dot{width:11px;height:11px;border-radius:50%;background:var(--line);border:2px solid var(--card);flex:none;position:relative;z-index:1}
+  .jrow.exp .dot{background:var(--ink)}
+  .jrow .name{font-size:16px;font-weight:600}
+  .jrow .drv{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .jrow.brand .drv{color:var(--sec2);background:var(--bg2)}
+  .jrow.exp .drv{color:#fff;background:var(--ink)}
+
+  .vs{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line2);border-radius:20px;overflow:hidden;max-width:820px;margin:0 auto}
+  .vs .col{padding:32px 30px;background:var(--card)}
+  .vs .col.a{background:var(--bg2)}
+  .vs .col .h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sec2);margin-bottom:16px}
+  .vs .col.b .h{color:var(--ink)}
+  .vs .col ul{list-style:none}
+  .vs .col li{font-size:15px;padding:10px 0;color:var(--sec);border-top:1px solid var(--line2)}
+  .vs .col li:first-of-type{border-top:none}
+  .vs .col.b li{color:var(--ink);font-weight:600}
+  .vs-line{text-align:center;font-size:clamp(21px,3vw,30px);font-weight:700;letter-spacing:-.03em;margin-top:28px;line-height:1.3}
+  .vs-line b{box-shadow:inset 0 -3px 0 var(--ink)}
+  @media(max-width:640px){.vs{grid-template-columns:1fr}}
+
+  .matrix{max-width:540px;margin:0 auto}
+  .m-ylab,.m-xlab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--sec2);text-align:center}
+  .m-ylab{margin-bottom:10px}.m-xlab{margin-top:10px}
+  .m-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1.5px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;aspect-ratio:1/0.8}
+  .m-q{background:var(--card);padding:20px 18px;font-size:14px;font-weight:700;color:var(--sec2);display:flex;flex-direction:column;justify-content:center}
+  .m-q span{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.04em;margin-top:5px;color:var(--sec2)}
+  .m-q.on{color:var(--ink)}
+  .m-q.tr,.m-q.br{align-items:flex-end;text-align:right}
+  .m-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;border-radius:14px;padding:15px 20px;text-align:center;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.22);z-index:3;max-width:78%}
+  .m-center b{display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;color:#ff9d6b;margin-top:6px;letter-spacing:.04em}
+
+  .insights3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .ins{background:var(--card);border:1px solid var(--line2);border-radius:20px;padding:28px 26px}
+  .ins .qm{font-size:40px;line-height:.5;color:var(--line);font-weight:700;height:26px}
+  .ins p{font-size:16px;font-weight:600;line-height:1.5;letter-spacing:-.02em;color:var(--ink)}
+  .ins-src{text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--sec2);margin-top:20px}
+  @media(max-width:760px){.insights3{grid-template-columns:1fr}}
+
+  .observe{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:38px 36px;text-align:center}
+  .observe h4{font-size:21px;font-weight:700;letter-spacing:-.03em;margin-bottom:24px}
+  .checks{list-style:none;display:inline-grid;grid-template-columns:1fr 1fr;gap:13px 34px;text-align:left;margin-bottom:26px}
+  .checks li{font-size:15.5px;font-weight:600;display:flex;gap:11px;align-items:center}
+  .checks .ck{color:var(--ink);font-weight:800}
+  .observe .ob-note{font-size:16px;color:var(--sec);line-height:1.55;padding-top:22px;border-top:1px solid var(--line2)}
+  .observe .ob-note b{color:var(--ink);font-weight:700}
+  @media(max-width:560px){.checks{grid-template-columns:1fr}}
+
+  .framework{background:var(--dark);color:#fff;border-radius:24px;padding:52px 40px;text-align:center}
+  .framework .fname{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#86868b}
+  .framework h3{font-size:clamp(22px,3.4vw,32px);font-weight:700;letter-spacing:-.035em;line-height:1.3;margin-top:16px}
+  .fflow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:34px}
+  .fnode{font-size:14px;font-weight:600;color:#f5f5f7;border:1px solid var(--hair);border-radius:999px;padding:9px 16px}
+  .fnode.on{background:#fff;color:#000;border-color:#fff}
+  .farrow{color:#6e6e73;font-size:14px}
+  .floop{margin-top:22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:#a1a1a6}
+  .framework .byline{margin-top:26px;padding-top:22px;border-top:1px solid var(--hair);font-size:13px;color:#86868b}
+
+  @media print{
+    nav{display:none}
+    section{padding:52px 0;break-inside:avoid-page}
+    .hero{min-height:auto;padding:40px 0}
+    .stat,.synth,.northstar,.hero,.close,footer,.zone.target,.equation .eq.res{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .pcard,.axis,.impact,.dcard,.mk,.stat,.spectrum,.equation{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand">Yugyeong Shin <i>· AAC</i></div>
+  <div class="links">
+    <a href="#understand">이해</a>
+    <a href="#fit">적합</a>
+    <a href="#amred">엠레드 분석</a>
+    <a href="#next">나아갈 길</a>
+    <a href="#contact">연락처</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-top">
+    <span class="m">AAC.</span>
+    <span class="r">전략기획실 시니어 매니저 지원</span>
+  </div>
+  <div class="hero-core">
+    <span class="eyebrow">A Strategy Proposal · Yugyeong Shin</span>
+    <h1>시간을 설계하는 안티에이징 클럽에서,<br><span class="g">사업의 구조를</span> 설계하겠습니다.</h1>
+    <div class="who"><b>신유경</b> · Yugyeong Shin — 플랫폼 · 신사업 · 병원 0→1을 세워온 전략가</div>
+  </div>
+  <div class="cue">Scroll ↓</div>
+</header>
+
+<!-- 01 이해 -->
+<section id="understand"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">01 — 이해 · Reading AAC</span>
+    <h2>AAC는 뷰티를<br>'브랜드'로 키우는 회사입니다.</h2>
+    <p>클리닉을 넘어 다이어트·웰니스·화장품까지 — 각 브랜드가 유기적으로 연결돼 서로의 성장에 올라탑니다.</p>
+  </div>
+  <div class="axes">
+    <div class="axis"><div class="em">🏥</div><h4>클리닉</h4><p>피부 · 시술</p></div>
+    <div class="axis"><div class="em">⚖️</div><h4>다이어트</h4><p>바디 · 비만</p></div>
+    <div class="axis"><div class="em">🧘</div><h4>웰니스</h4><p>롱제비티 · 회복</p></div>
+    <div class="axis"><div class="em">💧</div><h4>코스메틱</h4><p>홈케어 · 브랜드</p></div>
+  </div>
+  <p class="cycle">한 브랜드의 성공이, 다음 브랜드의 <b>자산</b>이 됩니다.</p>
+
+  <div class="northstar">
+    <div class="star">✦</div>
+    <span class="lab">The North Star</span>
+    <h3>이런 회사엔 지점을 관리하는 사람이 아니라,<br>흩어진 브랜드를 <b>하나의 북극성 지표</b>로 정렬하고<br><span class="g">시장의 흐름을 거시적으로 읽는 전략가</span>가 필요합니다.</h3>
+  </div>
+</div></section>
+
+<!-- 02 적합 -->
+<section id="fit"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">02 — 적합 · Why Me</span>
+    <h2>운영·수익·고객·글로벌,<br>저는 이미 하나씩 지어봤습니다.</h2>
+    <p>그리고 그 네 가지를 하나의 지표로 꿰어, 다음 액션을 데이터가 정하게 만든 사람입니다.</p>
+  </div>
+  <div class="pillars">
+    <div class="pcard"><div class="em">⚙️</div><span class="tag">Operation</span><h3>운영을 표준화했습니다</h3><p>전국 피부과 네트워크를 0에서. 온보딩·MOT·콜센터·OKR까지 세팅.</p></div>
+    <div class="pcard"><div class="em">📈</div><span class="tag">Revenue</span><h3>매출을 BI로 봤습니다</h3><p>유입·전환·리스크를 담은 대시보드를 직접 설계, IR 덱으로 전환.</p></div>
+    <div class="pcard"><div class="em">🧬</div><span class="tag">Customer</span><h3>고객을 데이터 자산으로</h3><p>MOT마다 남길 데이터부터 설계. 상담 온도·자동 리마인드로 재방문↑.</p></div>
+    <div class="pcard"><div class="em">🌏</div><span class="tag">Global</span><h3>일본 인바운드를 운영했습니다</h3><p>이뻐로 화상상담·도쿄 상담회. 병원 대상 B2B '구독'을 직접 설계.</p></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="v">+10<span class="u">%p</span></div><div class="l">재방문율</div></div>
+    <div class="stat"><div class="v">+7<span class="u">%p</span></div><div class="l">전환율</div></div>
+    <div class="stat"><div class="v">+21<span class="u">%</span></div><div class="l">객단가</div></div>
+  </div>
+  <p class="stat-note">감으로 정한 건 없습니다 · 3개월 실측 · 지금은 Claude Code로 직접 시스템을 만듭니다</p>
+</div></section>
+
+<!-- 03 엠레드 분석 -->
+<section id="amred" class="amred"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">03 — 엠레드 분석 · A Brand Proposal</span>
+    <h2>한 브랜드를 어떻게 읽는가.</h2>
+    <p>왜 의료였고, 왜 엠레드인지 — 그리고 엠레드가 나아갈 길.</p>
+  </div>
+  <div class="diag">
+    <p class="motive">제가 '디렉터'라는 피부과 브랜드를 세울 때, 늘 곁에 둔 레퍼런스가 <b>엠레드</b>였습니다. 단순한 피부과가 아니라 — <b>피부계의 젠틀몬스터</b>. 브랜딩을 진심으로 하는 회사라고 느꼈습니다. 그 애정 위에, 브랜드를 직접 만들어본 사람의 분석을 얹습니다.
+      <span class="src">왜 의료, 왜 엠레드</span>
+    </p>
+
+    <div class="epigraph">
+      <p>“피부 관리는 미술관을 찾는 일과 다릅니다. 인테리어로 카페처럼 멋진 이미지는 줄 수 있어도, 다시 오고 싶게 만드는 것과 같지는 않습니다.”</p>
+      <cite>진단의 출발점</cite>
+    </div>
+
+    <div class="sub-lab">Strategic Diagnosis · 시장은 이렇게 움직인다</div>
+    <p class="sd-open">브랜딩은 고객을 <b>방문</b>하게 할 수 있지만,<br>다시 오게 만드는 것은 <b>경험</b>이다.</p>
+    <p class="sd-sub">피부과는 카페나 미술관처럼 공간을 소비하는 산업이 아니다. 결과와 신뢰를 소비하는 <b>고관여 서비스</b>다.</p>
+
+    <div class="sub-lab">1 · 고객 결정 여정 — Decision Journey</div>
+    <div class="jcard">
+      <div class="journey">
+        <div class="jrow brand"><div class="left"><span class="dot"></span><span class="name">검색</span></div><span class="drv">브랜드</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">후기 탐색</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">가격 비교</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">의사 신뢰</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">상담 경험</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">예약 · 시술</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">사후관리</span></div><span class="drv">경험</span></div>
+        <div class="jrow exp"><div class="left"><span class="dot"></span><span class="name">재방문 · 추천</span></div><span class="drv">경험</span></div>
+      </div>
+    </div>
+    <p class="takeaway">여정의 <b>입구 한 곳</b>만 브랜드가 지배한다. 나머지 전부는 — 경험이 결정한다.</p>
+
+    <div class="sub-lab">2 · 문제 정의 — 고객은 무엇을 사는가</div>
+    <p class="sd-q">고객은 정말 '예쁜 병원'을 선택할까?</p>
+    <div class="vs">
+      <div class="col a">
+        <div class="h">브랜드가 파는 것</div>
+        <ul><li>인테리어</li><li>공간</li><li>SNS</li><li>분위기</li><li>디자인</li></ul>
+      </div>
+      <div class="col b">
+        <div class="h">고객이 사는 것</div>
+        <ul><li>의료진 신뢰</li><li>시술 결과</li><li>합리적인 가격</li><li>과잉진료 여부</li><li>사후관리</li></ul>
+      </div>
+    </div>
+    <p class="vs-line">고객은 <b>공간</b>보다 <b>결과</b>를 구매한다.</p>
+
+    <div class="sub-lab">3 · 시장 포지셔닝 — Positioning Matrix</div>
+    <div class="matrix">
+      <div class="m-ylab">↑ 프리미엄 경험 (Premium Experience)</div>
+      <div class="m-grid">
+        <div class="m-q tl">가성비 프리미엄<span>희소 · 구현 난이도 높음</span></div>
+        <div class="m-q tr on">럭셔리 피부과<span>명확한 프리미엄</span></div>
+        <div class="m-q bl on">공장형 피부과<span>명확한 가성비</span></div>
+        <div class="m-q br">과잉 가격<span>즉시 이탈</span></div>
+        <div class="m-center">애매한 프리미엄<b>◆ 엠레드 현재 · 최고 위험</b></div>
+      </div>
+      <div class="m-xlab">낮음 　←　 가격 (Price) 　→　 높음</div>
+    </div>
+    <p class="takeaway">중간은 프리미엄 고객에겐 <b>부족</b>하고, 합리 고객에겐 <b>비싸다.</b> 어느 세그먼트에도 1순위가 아니라 — 가장 먼저 이탈한다.</p>
+
+    <div class="sub-lab">4 · 전략 인사이트 — Insight</div>
+    <div class="insights3">
+      <div class="ins"><div class="qm">“</div><p>고객은 애매한 프리미엄보다, 확실한 프리미엄 또는 확실한 합리성을 택한다.</p></div>
+      <div class="ins"><div class="qm">“</div><p>고객은 비싸서 오지 않는다. 믿을 수 있어서 온다.</p></div>
+      <div class="ins"><div class="qm">“</div><p>고객은 브랜드를 기억하지 않는다. 좋은 경험을 기억한다.</p></div>
+    </div>
+    <p class="ins-src">— 브랜드를 직접 만들며 얻은 세 가지 결론</p>
+
+    <div class="sub-lab">5 · 관찰 — 엠레드는 이미 하고 있다</div>
+    <div class="observe">
+      <h4>엠레드는 이미 '고객 경험'을 만들고 있다.</h4>
+      <ul class="checks">
+        <li><span class="ck">✓</span> 만족도 조사</li>
+        <li><span class="ck">✓</span> 코디네이터 케어</li>
+        <li><span class="ck">✓</span> 원장 상담</li>
+        <li><span class="ck">✓</span> 수납 내역 카카오톡</li>
+        <li><span class="ck">✓</span> 지속 고객관리</li>
+      </ul>
+      <p class="ob-note">이것은 단순한 운영 프로세스가 아니다.<br><b>이미 존재하는 Brand Asset이다.</b></p>
+    </div>
+
+    <div class="sub-lab">6 · 프레임워크 — Trust-Led Brand Framework</div>
+    <div class="framework">
+      <span class="fname">Trust-Led Brand Framework</span>
+      <h3>브랜드는 신뢰로 완성되고,<br>신뢰는 경험에서 나온다.</h3>
+      <div class="fflow">
+        <span class="fnode">Brand</span><span class="farrow">→</span>
+        <span class="fnode">Expectation</span><span class="farrow">→</span>
+        <span class="fnode">Experience</span><span class="farrow">→</span>
+        <span class="fnode on">Trust</span><span class="farrow">→</span>
+        <span class="fnode">Revisit</span><span class="farrow">→</span>
+        <span class="fnode">Brand Equity</span>
+      </div>
+      <div class="floop">↻ Brand Equity가 다시 Brand를 키우는 — 선순환</div>
+      <p class="byline">브랜드를 직접 만들며 정립한, 신유경의 사고 체계</p>
+    </div>
+    <p class="vs-line" style="margin-top:36px">좋은 브랜딩은 예쁜 공간을 만드는 게 아니라,<br><b>신뢰가 보이도록</b> 만드는 것이다.</p>
+
+    <div class="sub-lab">실행 제안 · 확장 & 웰니스</div>
+    <div class="dgrid">
+      <div class="dcard">
+        <span class="lab">확장 · 넓히지 말고 좁혀서</span>
+        <h3>부산 · 제주 직영 + 명동</h3>
+        <p>톤앤매너상 지점을 늘리면 포지셔닝이 무너집니다. <b>셋 다 해외 환자의 관문 도시</b> — 부산·제주는 관광 입국 관문, 명동은 외국인 1번지. 딱 이만큼만 확실히 관리하는 희소함이, 해외 환자에겐 신뢰가 됩니다.</p>
+      </div>
+      <div class="dcard">
+        <span class="lab">웰니스 · 머무는 하루</span>
+        <h3>해외 환자에게 '체류형'을</h3>
+        <p>그들은 머물 곳이 필요합니다. 호텔·찜질방 같은 하루에 <b>아침 요가·동양의 명상</b>을 얹으면 — 웰니스하우스서울이 바로 그 무대가 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="sub-lab">실행 제안 · 해외 환자는 하나의 집단이 아니다</div>
+    <div class="markets">
+      <div class="mk">
+        <div class="flag">🇯🇵</div>
+        <h4>일본 고객</h4>
+        <div class="oneline">믿을 수 있게</div>
+        <div class="row"><div class="k">특성</div><div class="v">매우 꼼꼼함. 충분히 검증한 뒤 결정</div></div>
+        <div class="row"><div class="k">과제</div><div class="v">신뢰 확보</div></div>
+        <div class="row"><div class="k">전략</div><div class="v">전후·인증·안전을 촘촘히. LINE 상담·예약</div></div>
+      </div>
+      <div class="mk">
+        <div class="flag">🇺🇸</div>
+        <h4>미주 · 서구 고객</h4>
+        <div class="oneline">알게 하는 것부터</div>
+        <div class="row"><div class="k">특성</div><div class="v">한국 시술 시장 이해도 자체가 낮음</div></div>
+        <div class="row"><div class="k">과제</div><div class="v">시장 교육 · 카테고리 창출</div></div>
+        <div class="row"><div class="k">전략</div><div class="v">"리프팅은 한국" 인식부터. 영어 온보딩 · 콘텐츠 · 인플루언서</div></div>
+      </div>
+    </div>
+
+    <div class="synth">
+      <span class="lab">Conclusion · 진단을 전략으로</span>
+      <h3>브랜드가 유일한 해자인 시장에서, 엠레드의 신뢰는 곧 AAC 전체의 자산입니다.<br>하나의 <b>북극성 지표</b>로 정렬할 때 — 엠레드가 오르면 웰니스·코스메틱·다이어트가 함께 <b>선순환</b>에 올라탑니다.</h3>
+    </div>
+  </div>
+</div></section>
+
+<!-- 04 나아갈 길 -->
+<section id="next"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">04 — 나아갈 길 · The Path</span>
+    <h2>합류하면,<br>이 네 가지에 손을 댑니다.</h2>
+  </div>
+  <div class="impacts">
+    <div class="impact">
+      <div class="em">✦</div><div class="n">01</div>
+      <h3>하나의 북극성 지표로 정렬한다</h3>
+      <p>브랜드·사업부가 저마다 읽던 숫자를 <b>전 사업부 공통의 단 하나의 지표</b>로. 같은 방향을 볼 때 선순환이 시작됩니다.</p>
+    </div>
+    <div class="impact">
+      <div class="em">🔄</div><div class="n">02</div>
+      <h3>브랜드 간 여정을 선순환으로</h3>
+      <p><b>클리닉 → 웰니스 → 코스메틱</b> 재구매로. 한 번 들어온 고객의 생애가치를 AAC 전체가 함께 키웁니다.</p>
+    </div>
+    <div class="impact">
+      <div class="em">🌏</div><div class="n">03</div>
+      <h3>인바운드를 성장 엔진으로</h3>
+      <p>웰니스하우스서울 × 외국인환자유치 = <b>체류형 롱제비티</b>. 일본에서 신뢰를 검증한 뒤 미주로.</p>
+    </div>
+    <div class="impact">
+      <div class="em">🤖</div><div class="n">04</div>
+      <h3>전략실을 AI 레버리지 조직으로</h3>
+      <p>리서치·데이터·리포트를 <b>에이전트로 자동화</b>. 소수가 대형 조직만큼 냅니다 — 이 제안서도 그렇게 만들었습니다.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CLOSE -->
+<section id="contact" class="close"><div class="wrap">
+  <h2>흩어진 브랜드를 하나의 방향으로,<br><span class="g">그 구조를 설계하겠습니다.</span></h2>
+  <div class="ct">
+    <a href="mailto:ceres0409@gmail.com">✉ ceres0409@gmail.com</a>
+    <a href="tel:01030899889">📞 010-3089-9889</a>
+  </div>
+</div></section>
+<footer>© 2026 Yugyeong Shin · ㈜에이에이씨 전략기획실 지원</footer>
+
+</body>
+</html>
